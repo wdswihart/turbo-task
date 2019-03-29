@@ -1,0 +1,25 @@
+<div class='container'>
+    <div></div>
+    <mat-nav-list *ngIf='isUserLoggedIn'>
+        <a mat-list-item (click)='navigateTo("list_creator")'>
+            Create New List
+            <div class='fill-remaining-space'></div>
+            <mat-icon>chevron_right</mat-icon>
+        </a>
+        <mat-divider></mat-divider>
+        <div *ngFor='let list of lists'>
+            <a mat-list-item (click)='selectList(list.name)'>
+                {{list.name}}
+                <div class='fill-remaining-space'></div>
+                <mat-icon>chevron_right</mat-icon>
+            </a>
+        </div>
+    </mat-nav-list>
+    <mat-nav-list *ngIf='!isUserLoggedIn'>
+        <a mat-list-item (click)='selectList("Default List")'>
+            Default List
+            <div class='fill-remaining-space'></div>
+            <mat-icon>chevron_right</mat-icon>
+        </a>
+    </mat-nav-list>
+</div>

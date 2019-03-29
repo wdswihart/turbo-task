@@ -1,0 +1,15 @@
+<div class='container'>
+    <mat-form-field>
+        <input #nameField matInput placeholder='List Name'
+                [(ngModel)]='name'>
+    </mat-form-field>
+    <div class='text-align-center'>
+        <button class='mr-2' mat-raised-button color='primary' 
+                (click)='navService.navigateBack()'>
+            Back
+        </button>
+        <button mat-raised-button color='primary' (click)='addList()'>
+            Add List
+        </button>
+    </div>
+</div>

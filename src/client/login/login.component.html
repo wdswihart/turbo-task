@@ -1,0 +1,19 @@
+<div class='container pa-3'>
+    <mat-form-field>
+        <input matInput placeholder='Username' 
+                [(ngModel)]='credentials.username'>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder='Password' type='password'
+                [(ngModel)]='credentials.password'>
+    </mat-form-field>
+    <div class='text-align-center'>
+        <button mat-raised-button color='primary' class='mr-2' 
+                (click)='register()'>
+            Register
+        </button>
+        <button mat-raised-button color='primary' (click)='logIn()'>
+            Log In
+        </button>
+    </div>
+</div>

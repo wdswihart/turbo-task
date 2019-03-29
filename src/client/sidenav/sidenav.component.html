@@ -1,0 +1,23 @@
+<mat-sidenav-container>
+    <mat-sidenav [(opened)]='sidenavService.isSidebarOpen' mode='over' 
+            role='navigation'>
+        <mat-nav-list>
+            <a mat-list-item color='accent' *ngIf='!isUserLoggedIn'
+                    (click)='onLogInButtonClick()'>
+                Log In
+                <div class='fill-remaining-space'></div>
+                <mat-icon>chevron_right</mat-icon>
+            </a>
+            <div *ngIf='isUserLoggedIn'>
+                <a mat-list-item (click)='onUsernameClick()'>
+                    <span class='mr-1'>Welcome, {{authService.getUsername()}}</span>
+                    <div class='fill-remaining-space'></div>
+                    <mat-icon>chevron_right</mat-icon>
+                </a>
+            </div>
+        </mat-nav-list>
+        <turbo-task-list-view (sidebarClose)='onTaskListViewEvent($event)'>
+        </turbo-task-list-view>
+    </mat-sidenav>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>

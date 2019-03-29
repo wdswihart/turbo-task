@@ -1,0 +1,40 @@
+<mat-toolbar color='primary' aria-label='toolbar'>
+    <button mat-icon-button (click)='onToggleClick()'>
+        <mat-icon aria-label='menu'>menu</mat-icon>
+    </button>
+    <nav class='container-horizontal'>
+        <a mat-button class='large-text clickable' 
+                (click)='onTitleClick()'>
+            {{text}}
+        </a>
+    </nav>
+    <span class='fill-remaining-space'></span>
+    <nav>
+        <a mat-button *ngIf='!isUserLoggedIn' class='clickable'
+                (click)='navigateTo("login")'>
+            Log In
+        </a>
+    </nav>
+
+    <mat-menu #listMenu>
+        <button mat-menu-item (click)='onViewArchivedClick()'>
+            {{viewArchivedButtonText}}
+        </button>
+        <button mat-menu-item (click)='onToggleRemoveClick()'>
+            {{toggleRemoveButtonText}}
+        </button>
+        <button mat-menu-item (click)='onRemoveAllCompletedClick()'>
+            Remove All Completed Tasks
+        </button>
+        <button mat-menu-item (click)='onRemoveAllClick()'>
+            Removal All Tasks
+        </button>
+        <button mat-menu-item (click)='onDeleteListClick()'>
+            Delete List
+        </button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]='listMenu'>
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    
+</mat-toolbar>

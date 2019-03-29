@@ -1,0 +1,29 @@
+<div class='container'>
+    <mat-form-field>
+        <input #titleField matInput placeholder='Task Title'
+                [(ngModel)]='task.title'>
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput placeholder='Task Description (optional)'
+                [(ngModel)]='task.description'></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type='date' placeholder='Goal Date' [(ngModel)]='task.goalDate'>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [formControl]='listName' placeholder='List'>
+            <mat-option *ngFor='let list of lists' [value]='list.name'>
+                {{list.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class='text-align-center'>
+        <button class='mr-2' mat-raised-button color='primary'
+                (click)='navService.navigateBack()'>
+            Back
+        </button>
+        <button mat-raised-button color='primary' (click)='addTask()'>
+            Add Task
+        </button>
+    </div>
+</div>

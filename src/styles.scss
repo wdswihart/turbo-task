@@ -1,0 +1,117 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/theming';
+
+@mixin theme-color-grabber($theme) {
+    $primary-color: map-get($theme, primary);
+    $accent-color: map-get($theme, accent);
+    $warn-color: map-get($theme, warn);
+
+    .primary-color-bg {
+        background-color: mat-color($primary-color);
+    }
+}
+
+$text-warn: goldenrod * 1.1;
+
+.text-bold {
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+    padding: 15px;
+}
+
+.container-horizontal {
+    display: flex;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.ml-1 {
+    margin-left: 5px;
+}
+.ml-2 {
+    margin-left: 10px;
+}
+.mr-1 {
+    margin-right: 5px;
+}
+.mr-2 {
+    margin-right: 10px;
+}
+.mr-3 {
+    margin-right: 15px;
+}
+.mt-2 {
+    margin-top: 10px;
+}
+.mt-3 {
+    margin-top: 15px;
+}
+.mt-4 {
+    margin-top: 20px;
+}
+.ma-2 {
+    margin: 10px;
+}
+
+.pr-3 {
+    padding-right: 15px;
+}
+.pl-3 {
+    padding-left: 15px;
+}
+.pb-3 {
+    padding-bottom: 15px;
+}
+.pt-1 {
+    padding-top: 5px;
+}
+.pa-2 {
+    padding: 10px;
+}
+.pa-3 {
+    padding: 15px;
+}
+.pa-4 {
+    padding: 20px;
+}
+
+.btn-circle {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+
+.text-light {
+    color: white;
+}
+
+.large-text {
+    font-size: 1em;
+}
+
+
+.text-warn {
+    color: $text-warn;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }

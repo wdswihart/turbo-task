@@ -1,0 +1,55 @@
+<div class='container pr-3 pl-3 pb-3 pt-1'>
+    <div *ngIf='!isUserLoggedIn' 
+            class='text-warn mt-4 text-bold text-align-center'>
+        Until you log in, your tasks cannot be saved.
+    </div>
+    <div class='text-align-center mt-4' 
+            *ngIf='taskService.shouldShowArchived'>
+        Showing only archived tasks.
+    </div>
+    <mat-list #taskList id='taskList' name='taskList' role='list'
+            *ngIf='tasks.length > 0'>
+        
+        <div *ngFor='let task of tasks'
+                (swipeleft)='onTaskSwipe($event, task)'
+                (swiperight)='onTaskSwipe($event, task)'>
+            <mat-expansion-panel 
+                    *ngIf='((task.description && task.description !== "") || 
+                            task.goalDate) && ((task.isArchived && 
+                            taskService.shouldShowArchived) || 
+                            !task.isArchived && !taskService.shouldShowArchived)'>
+                <mat-expansion-panel-header>
+                    <mat-checkbox class='mr-3' [indeterminate]=false 
+                            [checked]='task.isComplete'
+                            (change)='onCheckboxChange($event, task)'
+                            (click)='$event.stopPropagation()'>
+                        <span>{{task.title}}</span>
+                    </mat-checkbox>
+                </mat-expansion-panel-header>
+                <div>{{task.description}}</div>
+                <div *ngIf='task.goalDate'>
+                    Goal date: {{task.goalDate.toLocaleDateString()}}
+                </div>
+            </mat-expansion-panel>
+            <mat-list-item *ngIf='((!task.description || 
+                    task.description === "") && !task.goalDate) && 
+                    ((task.isArchived && taskService.shouldShowArchived) || 
+                    !task.isArchived && !taskService.shouldShowArchived)'>
+                <mat-checkbox class='mr-3' [indeterminate]=false 
+                        (change)='onCheckboxChange($event, task)'
+                        [checked]='task.isComplete'>
+                    <span>{{task.title}}</span>
+                </mat-checkbox>
+            </mat-list-item>
+        </div>
+    </mat-list>
+    <div class='text-align-center mt-4' 
+            *ngIf='shouldShowEmptyListText()'>
+        There are no tasks to show.
+    </div>
+
+    <button mat-fab class='fab'
+            (click)='navService.navigateByUrl("task_creator")'>
+        <mat-icon>add</mat-icon>
+    </button>
+</div>

@@ -1,0 +1,26 @@
+<div class='container'>
+    <div class='text-align-center'>
+        Logged in as {{authService.getUsername()}}
+    </div>
+    <div class='text-align-center mt-3'>
+        <button mat-raised-button color='primary' (click)='authService.logOut()'>
+            Log Out
+        </button>
+    </div>
+    <form class='container text-align-center'>
+        <mat-form-field>
+            <input matInput name='newPassword' type='password' 
+                    [(ngModel)]='newPassword' placeholder='New Password'>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput name='confirmPassword' type='password' 
+                    [(ngModel)]='confirmPassword' placeholder='Confirm New Password'>
+        </mat-form-field>
+        <div>
+            <button mat-raised-button color='primary' 
+                    (click)='onChangePasswordClick()'>
+                Change Password
+            </button>
+        </div>
+    </form>
+</div>
